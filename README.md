@@ -1,5 +1,7 @@
 <img src="https://russellsamora.github.io/scrollama/logo.png" width="160" alt="scrollama.js"/>
 
+_lorismat playground_  
+
 **Scrollama** is a modern & lightweight JavaScript library for scrollytelling
 using
 [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
