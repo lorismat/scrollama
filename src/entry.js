@@ -10,6 +10,9 @@ import getOffsetTop from "./getOffsetTop";
 import { setupScroll, direction, onScroll } from "./scroll";
 
 function scrollama() {
+
+  console.log("blob");
+  
 	let cb = {};
 
 	let id = generateId();

@@ -134,6 +134,9 @@
   }
 
   function scrollama() {
+
+    console.log("blob");
+    
   	let cb = {};
 
   	let id = generateId();

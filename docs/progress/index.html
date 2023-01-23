@@ -26,6 +26,10 @@
 			border: 2px solid #f3f3f3;
 		}
 
+    .long {
+      padding: 200rem 0 ;
+    }
+
 		.step p {
 			text-align: center;
 			margin: 0.5rem auto;
@@ -74,13 +78,19 @@
 					<p>STEP 2</p>
 					<p class="progress">0%</p>
 				</div>
+
+        <div class="step long" data-step="0,128,0">
+					<p>STEP 3</p>
+					<p class="progress">0%</p>
+				</div>
+
 			</article>
 		</section>
 		<section id="outro"></section>
 	</main>
 
 	<script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
-	<script src="../scrollama.min.js"></script>
+	<script src="../../build/scrollama.js"></script>
 	<script>
 		// using d3 for convenience
 		var scrolly = d3.select("#scrolly");
@@ -91,7 +101,7 @@
 		var scroller = scrollama();
 
 		function handleStepProgress(response) {
-			console.log(response);
+			console.log(response.progress);
 			var el = d3.select(response.element);
 
 			var val = el.attr("data-step");
