@@ -120,6 +120,8 @@
   function onScroll(container) {
   	const scrollTop = container ? container.scrollTop : window.pageYOffset;
 
+    console.log("scrollTop", scrollTop, currentScrollY);
+
   	if (currentScrollY === scrollTop) return;
   	currentScrollY = scrollTop;
   	if (currentScrollY > comparisonScrollY) direction = "down";
@@ -128,6 +130,7 @@
   }
 
   function setupScroll(container) {
+    console.log("window.pageYOffset", window.pageYOffset);
   	currentScrollY = 0;
   	comparisonScrollY = 0;
   	document.addEventListener("scroll", () => onScroll(container));
@@ -135,7 +138,7 @@
 
   function scrollama() {
 
-    console.log("blob");
+    console.log("blob", "blob again");
     
   	let cb = {};
 

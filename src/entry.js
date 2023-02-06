@@ -11,7 +11,7 @@ import { setupScroll, direction, onScroll } from "./scroll";
 
 function scrollama() {
 
-  console.log("blob");
+  console.log("blob", "blob again");
   
 	let cb = {};
 

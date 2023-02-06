@@ -6,6 +6,8 @@ let direction;
 function onScroll(container) {
 	const scrollTop = container ? container.scrollTop : window.pageYOffset;
 
+  console.log("scrollTop", scrollTop, currentScrollY);
+
 	if (currentScrollY === scrollTop) return;
 
 	previousScrollY = currentScrollY;
@@ -16,6 +18,7 @@ function onScroll(container) {
 }
 
 function setupScroll(container) {
+  console.log("window.pageYOffset", window.pageYOffset);
 	previousScrollY = 0;
 	currentScrollY = 0;
 	comparisonScrollY = 0;

@@ -1,6 +1,12 @@
 <img src="https://russellsamora.github.io/scrollama/logo.png" width="160" alt="scrollama.js"/>
 
+# Remarks & Ideas
+- what is the "dev" directory for?
+- progress bar? 
+- index/table for sections?
+
 _lorismat playground_  
+colab: [how to](https://www.dataschool.io/how-to-contribute-on-github/)
 
 **Scrollama** is a modern & lightweight JavaScript library for scrollytelling
 using
