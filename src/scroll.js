@@ -6,7 +6,6 @@ let direction;
 function onScroll(container) {
 	const scrollTop = container ? container.scrollTop : window.pageYOffset;
 
-  console.log("scrollTop", scrollTop, currentScrollY);
 
 	if (currentScrollY === scrollTop) return;
 

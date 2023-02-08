@@ -10,9 +10,8 @@ import getOffsetTop from "./getOffsetTop";
 import { setupScroll, direction, onScroll } from "./scroll";
 
 function scrollama() {
-
-  console.log("blob", "blob again");
   
+  // callbacks
 	let cb = {};
 
 	let id = generateId();
@@ -27,6 +26,7 @@ function scrollama() {
 	let isProgress = false;
 	let isDebug = false;
 	let isTriggerOnce = false;
+  let isShow = false;
 
 	let exclude = [];
 
@@ -48,15 +48,27 @@ function scrollama() {
 
 	/* NOTIFY CALLBACKS */
 	function notifyProgress(element, progress) {
+    
 		const index = getIndex(element);
 		const step = steps[index];
 		if (progress !== undefined) step.progress = progress;
 		const response = { element, index, progress, direction };
 		if (step.state === "enter") cb.stepProgress(response);
+
+    if (progress !== undefined) {
+
+      // console.log("show val from notify progres", show);
+
+
+      // console.log(progress);
+      if (isShow) {
+        console.log("progress from notifyProgress", element, progress);
+      }
+    }
 	}
 
 	function notifyOthers(index, location) {
-		console.log(index, location, direction, currentScrollY, previousScrollY);
+		// console.log(index, location, direction, currentScrollY, previousScrollY);
 		if (location === "above") {
 			let i = direction === "down" ? 0 : index - 1;
 			let end = direction === "down" ? i < index : i >= 0;
@@ -132,6 +144,7 @@ function scrollama() {
 	/* OBSERVERS - HANDLING */
 	function resizeStep([entry]) {
 		const index = getIndex(entry.target);
+   
 		const step = steps[index];
 		const h = entry.target.offsetHeight;
 		if (h !== step.height) {
@@ -240,6 +253,7 @@ function scrollama() {
 		offset = 0.5,
 		threshold = 4,
 		progress = false,
+    show = false,
 		once = false,
 		debug = false,
 		container = undefined,
@@ -266,6 +280,7 @@ function scrollama() {
 		}
 
 		isProgress = progress;
+    isShow = show;
 		isTriggerOnce = once;
 		isDebug = debug;
 		progressThreshold = Math.max(1, +threshold);
