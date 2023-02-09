@@ -47,22 +47,23 @@ function scrollama() {
 	}
 
 	/* NOTIFY CALLBACKS */
+  // main progress function
 	function notifyProgress(element, progress) {
+
+    console.log(element, progress);
     
 		const index = getIndex(element);
 		const step = steps[index];
-		if (progress !== undefined) step.progress = progress;
+		// if (progress !== undefined) step.progress = progress; // from official
+    step.progress = progress;
 		const response = { element, index, progress, direction };
-		if (step.state === "enter") cb.stepProgress(response);
+
+    // this it the tricky part when the element is not on view
+		// if (step.state === "enter") cb.stepProgress(response); // from official
+    cb.stepProgress(response); 
 
     if (progress !== undefined) {
-
-      // console.log("show val from notify progres", show);
-
-
-      // console.log(progress);
       if (isShow) {
-        console.log("progress from notifyProgress", element, progress);
       }
     }
 	}
@@ -129,6 +130,7 @@ function scrollama() {
 
 		const response = { element, index, direction };
 
+    /* main modif */
 		if (isProgress) {
 			if (direction === "down" && step.progress < 1) notifyProgress(element, 1);
 			else if (direction === "up" && step.progress > 0)
@@ -166,9 +168,20 @@ function scrollama() {
 	function intersectProgress([entry]) {
 		const index = getIndex(entry.target);
 		const step = steps[index];
-		const { isIntersecting, intersectionRatio, target } = entry;
-		if (isIntersecting && step.state === "enter")
-			notifyProgress(target, intersectionRatio);
+		const { isIntersecting, intersectionRatio, target, boundingClientRect } = entry;
+    // intersect progress
+
+    // console.log(isIntersecting, target, intersectionRatio);
+    // console.log(boundingClientRect.y);
+    // check in view
+    if ( window.pageYOffset > boundingClientRect.y) {
+      notifyProgress(target, 1);
+    }
+    
+		if (isIntersecting && step.state === "enter") {
+      notifyProgress(target, intersectionRatio);
+    }
+			
 	}
 
 	/*  OBSERVERS - CREATION */

@@ -17,7 +17,7 @@ function onScroll(container) {
 }
 
 function setupScroll(container) {
-  console.log("window.pageYOffset", window.pageYOffset);
+  
 	previousScrollY = 0;
 	currentScrollY = 0;
 	comparisonScrollY = 0;

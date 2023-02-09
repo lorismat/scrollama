@@ -161,7 +161,7 @@
 		function init() {
 			// set random padding for different step heights (not required)
 			steps.forEach(function (step) {
-				var v = 100 + Math.floor((Math.random() * window.innerHeight) / 4);
+				var v = 10;
 				step.style.padding = v + "px 0px";
 			});
 
@@ -174,7 +174,7 @@
 					debug: true,
 					progress: true,
           show: true,
-					offset: 0
+					offset: 0.5
 				})
 				.onStepEnter(handleStepEnter)
 				.onStepExit(handleStepExit)

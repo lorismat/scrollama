@@ -6,3 +6,7 @@
 Note on JS:  
 - "This finally changed with the ES6 revision of JavaScript, which includes a syntax for importing and exporting functions and data so they can be shared between separate scripts.". But it does not work on all browsers so "Rollup allows you to write your code using the new module system, and will then compile it back down to existing supported formats such as CommonJS modules, AMD modules, and IIFE-style scripts."
 - **Tree-shaking** is removing what will not be used
+
+# About intersection-observer
+
+[Mozilla doc](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)

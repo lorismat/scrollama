@@ -27,7 +27,15 @@
 		}
 
     .long {
-      padding: 200rem 0 ;
+      padding: 1rem 0 ;
+    }
+
+    .med {
+      padding: 0.75rem 0 ;
+    }
+
+    .short {
+      padding: 0.5rem 0 ;
     }
 
 		.step p {
@@ -72,23 +80,23 @@
 
 		<section id="scrolly">
 			<article>
-				<div class="step" data-step="218,165,32">
+				<div class="step long" data-step="218,165,32">
 					<p>STEP 1</p>
 					<p class="progress">0%</p>
 				</div>
-				<div class="step" data-step="0,128,128">
+				<div class="step med" data-step="0,128,128">
 					<p>STEP 2</p>
+					<p class="progress">0%</p>
+				</div>
+        <div class="step short" data-step="0,128,128">
+					<p>STEP 3</p>
 					<p class="progress">0%</p>
 				</div>
 			</article>
 		</section>
 
+    <section id="outro"></section>
 
-
-
-
-
-		<section id="outro"></section>
 	</main>
 
 	<script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
@@ -112,22 +120,16 @@
 			el.select(".progress").text(d3.format(".1%")(response.progress));
 		}
 
-		function resize() {
-			var min = window.innerHeight * 0.5;
-			var h = min + Math.random() * window.innerHeight * 0.25;
-			step.style("height", Math.floor(h) + "px");
-			scroller.resize();
-		}
-
 		function init() {
 			// 1. setup the scroller with the bare-bones settings
 			// this will also initialize trigger observations
 			// 3. bind scrollama event handlers (this can be chained like below)
 			scroller
 				.setup({
-					step: "#scrolly article .step",
+					step: ".step",
 					progress: true,
-					debug: false
+					debug: true,
+          offset: 0.5
 				})
 				.onStepProgress(handleStepProgress);
 		}
